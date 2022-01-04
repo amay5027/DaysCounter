@@ -75,5 +75,17 @@ namespace DaysCounterTests
                                 .TotalDays();
             Assert.Equal(20, count);
         }
+
+        [Fact]
+        public void Check_Overlapping()
+        {
+            var periods = new List<DateRangeDto>()
+            {
+                new DateRangeDto(new DateTime(2020, 01, 01), new DateTime(2020, 01, 15)),
+                new DateRangeDto(new DateTime(2020, 01, 17), new DateTime(2020, 01, 31)),
+
+            };
+            Assert.False(periods.AreOverlapping());
+        }
     }
 }
